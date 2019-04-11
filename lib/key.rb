@@ -1,0 +1,9 @@
+class Key
+  def self.generate
+    num = []
+    5.times do
+      num << rand(10)
+    end
+    num.join
+  end
+end
