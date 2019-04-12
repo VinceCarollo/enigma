@@ -1,3 +1,4 @@
+require './test/test_helper'
 require 'minitest/autorun'
 require 'pry'
 require './lib/offset'

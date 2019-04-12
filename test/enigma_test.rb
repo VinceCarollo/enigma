@@ -1,3 +1,4 @@
+require './test/test_helper'
 require 'minitest/autorun'
 require './lib/enigma'
 
@@ -13,7 +14,6 @@ class EnigmaTest < Minitest::Test
   end
 
   def test_it_can_encrypt
-    skip
     expected = {
       encryption: "keder ohulw",
       key: "02715",
