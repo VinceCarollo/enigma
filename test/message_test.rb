@@ -29,6 +29,10 @@ class MessageTest < Minitest::Test
     assert_equal 20, encryption.d_shift
   end
 
+  def test_shift_letter
+    assert_equal 'd', encryption.shift_letter('l', 73)
+  end
+
   def test_it_can_encrypt
     skip
     assert_equal "keder ohulw", encryption.encrypt_with_keys
