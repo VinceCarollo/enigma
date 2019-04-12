@@ -1,5 +1,5 @@
 class Offset
-  def self.make_shift(date)
+  def self.return_shift(date)
     (date.to_i * date.to_i).to_s[-4..-1]
   end
 
@@ -8,6 +8,7 @@ class Offset
     day = date[-2..-1]
     month = date[4..5]
     year = date[2..3]
-    day + month + year
+    date = day + month + year
+    (date.to_i * date.to_i).to_s[-4..-1]
   end
 end
