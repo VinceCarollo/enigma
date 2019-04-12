@@ -22,10 +22,18 @@ class Message
     @key_shift[3..4].to_i + @date_shift[3].to_i
   end
 
+  def shift_letter(letter, shift)
+    i = @alphabet.index(letter)
+    @alphabet.rotate(shift)[i]
+  end
+
   def encrypt_with_keys
-    p @str
-    p @key_shift
-    p @date_shift
-    p @alphabet
+    final = []
+    @str.split('').each_slice do |arr|
+      final << arr[0] if !arr[0].nil?
+      final << arr[1] if !arr[1].nil?
+      final << arr[2] if !arr[2].nil?
+      final << arr[3] if !arr[3].nil?
+    end
   end
 end
