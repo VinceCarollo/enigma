@@ -34,7 +34,6 @@ class MessageTest < Minitest::Test
   end
 
   def test_it_can_encrypt
-    skip
     assert_equal "keder ohulw", encryption.encrypt_with_keys
   end
 end

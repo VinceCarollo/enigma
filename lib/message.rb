@@ -29,11 +29,12 @@ class Message
 
   def encrypt_with_keys
     final = []
-    @str.split('').each_slice do |arr|
-      final << arr[0] if !arr[0].nil?
-      final << arr[1] if !arr[1].nil?
-      final << arr[2] if !arr[2].nil?
-      final << arr[3] if !arr[3].nil?
+    @str.split('').each_slice(4) do |arr|
+      final << shift_letter(arr[0], a_shift) if !arr[0].nil?
+      final << shift_letter(arr[1], b_shift) if !arr[1].nil?
+      final << shift_letter(arr[2], c_shift) if !arr[2].nil?
+      final << shift_letter(arr[3], d_shift) if !arr[3].nil?
     end
+    final.join
   end
 end
