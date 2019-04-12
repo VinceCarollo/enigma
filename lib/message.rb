@@ -28,13 +28,13 @@ class Message
   end
 
   def encrypt_with_keys
-    final = []
+    encryption = []
     @str.split('').each_slice(4) do |arr|
-      final << shift_letter(arr[0], a_shift) if !arr[0].nil?
-      final << shift_letter(arr[1], b_shift) if !arr[1].nil?
-      final << shift_letter(arr[2], c_shift) if !arr[2].nil?
-      final << shift_letter(arr[3], d_shift) if !arr[3].nil?
+      encryption << shift_letter(arr[0], a_shift) if !arr[0].nil?
+      encryption << shift_letter(arr[1], b_shift) if !arr[1].nil?
+      encryption << shift_letter(arr[2], c_shift) if !arr[2].nil?
+      encryption << shift_letter(arr[3], d_shift) if !arr[3].nil?
     end
-    final.join
+    encryption.join
   end
 end
