@@ -25,11 +25,11 @@ class EnigmaTest < Minitest::Test
 
   def test_it_can_return_correct_hash_when_encrypting_something_with_capital_letters
     expected = {
-      encryption: "keder ohulw",
-      key: "02715",
-      date: "040895"
+      :encryption=>"l ay cgxiogelj",
+      :key=>"23819",
+      :date=>"040119"
     }
 
-    assert_equal expected, enigma.encrypt("Love radically", "23819", "040119")
+    assert_equal expected, enigma.encrypt("Love Radically", "23819", "040119")
   end
 end

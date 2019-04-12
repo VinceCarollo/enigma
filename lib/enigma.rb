@@ -21,7 +21,7 @@ class Enigma
     else
       date_shift = Offset.return_shift(date)
     end
-    @encrypted_str = Message.new(str, key_shift, date_shift).encrypt_with_keys
+    @encrypted_str = Message.new(str.downcase, key_shift, date_shift).encrypt_with_keys
     make_hash
   end
 
