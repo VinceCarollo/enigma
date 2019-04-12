@@ -12,15 +12,19 @@ class Enigma
     }
   end
 
+  def create_proper_offset
+    if @date.nil?
+      @date = Offset.create_shift.date
+      Offset.create_shift
+    else
+      Offset.return_shift(@date)
+    end
+  end
+
   def encrypt(str, key_shift=Key.create_shift, date=nil)
     @key_shift = key_shift
     @date = date
-    if date.nil?
-      date_shift = Offset.create_shift
-      @date = Offset.create_shift.date
-    else
-      date_shift = Offset.return_shift(date)
-    end
+    date_shift = create_proper_offset
     @encrypted_str = Message.new(str.downcase, key_shift, date_shift).encrypt_with_keys
     make_hash
   end
