@@ -17,6 +17,6 @@ class OffsetTest < Minitest::Test
     date = day + month + year
     current_date_shift = (date.to_i * date.to_i).to_s[-4..-1]
 
-    assert_equal current_date_shift, Offset.create_shift
+    assert_equal current_date_shift, Offset.create.date_shift
   end
 end

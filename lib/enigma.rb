@@ -14,10 +14,10 @@ class Enigma
 
   def create_proper_date_shift
     if @date.nil?
-      @date = Offset.create_shift.date
-      Offset.create_shift
+      @date = Offset.create.date
+      Offset.create.date_shift
     else
-      Offset.return_shift(@date)
+      Offset.return(@date)
     end
   end
 
