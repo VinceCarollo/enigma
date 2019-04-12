@@ -47,7 +47,7 @@ class EnigmaTest < Minitest::Test
 
   def test_it_can_return_correct_hash_when_decrypting
     expected = {
-      encryption: "hello world",
+      decryption: "hello world",
       key: "02715",
       date: "040895"
     }
