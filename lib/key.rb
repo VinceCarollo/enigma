@@ -1,5 +1,5 @@
 class Key
-  def self.generate
+  def self.create_shift
     num = []
     5.times do
       num << rand(10)
