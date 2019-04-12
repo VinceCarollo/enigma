@@ -14,12 +14,6 @@ class MessageTest < Minitest::Test
   end
 
   def test_it_can_encrypt
-    expected = {
-      encryption: "keder ohulw",
-      key: "02715",
-      date: "040895"
-    }
-
-    assert_equal expected, encryption.encrypt_with_keys
+    assert_equal "keder ohulw", encryption.encrypt_with_keys
   end
 end
