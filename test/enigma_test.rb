@@ -44,4 +44,20 @@ class EnigmaTest < Minitest::Test
     assert_equal 5, enigma.encrypt("Love Radically")[:key].length
     assert_equal 6, enigma.encrypt("Love Radically")[:date].length
   end
+
+  def test_it_can_return_correct_hash_when_decrypting
+    expected = {
+      decryption: "hello world",
+      key: "02715",
+      date: "040895"
+    }
+
+    assert_equal expected, enigma.decrypt("Keder Ohulw", "02715", "040895")
+  end
+
+  def test_it_can_decrypt_without_date_and_use_current_date
+    assert_equal 14, enigma.decrypt("Love Radically", "23819")[:decryption].length
+    assert_equal 5, enigma.decrypt("Love Radically", "23819")[:key].length
+    assert_equal 6, enigma.decrypt("Love Radically", "23819")[:date].length
+  end
 end

@@ -37,4 +37,15 @@ class Message
     end
     encryption.join
   end
+
+  def decrypt_with_keys
+    decryption = []
+    @str.split('').each_slice(4) do |arr|
+      decryption << shift_letter(arr[0], -a_shift) if !arr[0].nil?
+      decryption << shift_letter(arr[1], -b_shift) if !arr[1].nil?
+      decryption << shift_letter(arr[2], -c_shift) if !arr[2].nil?
+      decryption << shift_letter(arr[3], -d_shift) if !arr[3].nil?
+    end
+    decryption.join
+  end
 end

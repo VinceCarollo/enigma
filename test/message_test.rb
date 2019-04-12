@@ -36,4 +36,10 @@ class MessageTest < Minitest::Test
   def test_it_can_encrypt
     assert_equal "keder ohulw", encryption.encrypt_with_keys
   end
+
+  def test_it_can_decrypt
+    decryption = Message.new("keder ohulw", "02715", "1025")
+
+    assert_equal "hello world", decryption.decrypt_with_keys
+  end
 end
