@@ -39,13 +39,13 @@ class Message
   end
 
   def decrypt_with_keys
-    encryption = []
+    decryption = []
     @str.split('').each_slice(4) do |arr|
-      encryption << shift_letter(arr[0], -a_shift) if !arr[0].nil?
-      encryption << shift_letter(arr[1], -b_shift) if !arr[1].nil?
-      encryption << shift_letter(arr[2], -c_shift) if !arr[2].nil?
-      encryption << shift_letter(arr[3], -d_shift) if !arr[3].nil?
+      decryption << shift_letter(arr[0], -a_shift) if !arr[0].nil?
+      decryption << shift_letter(arr[1], -b_shift) if !arr[1].nil?
+      decryption << shift_letter(arr[2], -c_shift) if !arr[2].nil?
+      decryption << shift_letter(arr[3], -d_shift) if !arr[3].nil?
     end
-    encryption.join
+    decryption.join
   end
 end
