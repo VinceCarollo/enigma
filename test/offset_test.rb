@@ -6,7 +6,7 @@ require './lib/offset'
 class OffsetTest < Minitest::Test
 
   def test_it_can_take_date_and_give_shift
-    assert_equal "1025", Offset.return_shift("040895")
+    assert_equal "1025", Offset.return("040895")
   end
 
   def test_it_can_create_shift_based_on_current_date
