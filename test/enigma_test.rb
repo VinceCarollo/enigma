@@ -12,4 +12,14 @@ class EnigmaTest < Minitest::Test
   def test_it_exists
     assert_instance_of Enigma, enigma
   end
+
+  def test_it_can_return_correct_hash_when_encrypting
+    expected = {
+      encryption: "keder ohulw",
+      key: "02715",
+      date: "040895"
+    }
+
+    assert_equal expected, enigma.encrypt("hello world", "02715", "040895")
+  end
 end
