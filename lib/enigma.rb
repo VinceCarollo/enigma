@@ -4,7 +4,15 @@ require './lib/message'
 
 class Enigma
 
-  def encrypt(message, key_shift=Key.create_shift, date=nil)
+  def make_hash
+    {
+      encryption: @encrypted_str,
+      key: @key_shift,
+      date: @date
+    }
+  end
+
+  def encrypt(str, key_shift=Key.create_shift, date=nil)
     @key_shift = key_shift
     @date = date
     if date.nil?
@@ -13,7 +21,8 @@ class Enigma
     else
       date_shift = Offset.return_shift(date)
     end
-    @encryption_str = Message.new(message, key_shift, date_shift)
+    @encrypted_str = Message.new(str, key_shift, date_shift).encrypt_with_keys
+    make_hash
   end
 
 end
