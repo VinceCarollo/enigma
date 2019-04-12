@@ -32,4 +32,28 @@ class EnigmaTest < Minitest::Test
 
     assert_equal expected, enigma.encrypt("Love Radically", "23819", "040119")
   end
+
+  def test_it_can_encrypt_without_date_and_use_current_date
+    expected = {
+      :encryption=>"mdayaggxjsgemn",
+      :key=>"23819",
+      :date=>"110419"
+    }
+
+    assert_equal 14, expected[:encryption].length
+    assert_equal 5, expected[:key].length
+    assert_equal 6, expected[:date].length
+  end
+
+  def test_it_can_encrypt_without_date_and_key_and_creates_both
+    expected = {
+      :encryption=>"mdayaggxjsgemn",
+      :key=>"23819",
+      :date=>"110419"
+    }
+
+    assert_equal 14, expected[:encryption].length
+    assert_equal 5, expected[:key].length
+    assert_equal 6, expected[:date].length
+  end
 end
