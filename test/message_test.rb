@@ -13,7 +13,24 @@ class MessageTest < Minitest::Test
     assert_instance_of Message, encryption
   end
 
+  def test_it_can_create_A_shift
+    assert_equal 3, encryption.a_shift
+  end
+
+  def test_it_can_create_B_shift
+    assert_equal 27, encryption.b_shift
+  end
+
+  def test_it_can_create_C_shift
+    assert_equal 73, encryption.c_shift
+  end
+
+  def test_it_can_create_D_shift
+    assert_equal 20, encryption.d_shift
+  end
+
   def test_it_can_encrypt
+    skip
     assert_equal "keder ohulw", encryption.encrypt_with_keys
   end
 end
