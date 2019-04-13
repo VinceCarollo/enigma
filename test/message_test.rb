@@ -46,4 +46,12 @@ class MessageTest < Minitest::Test
 
     assert_equal "hello world", decryption.decrypt_with_keys
   end
+
+  def test_it_can_crack
+    encryption_to_crack = Message.new("vjqtbeaweqihssi", nil, "291018")
+    encryption_to_crack.crack
+
+    assert_equal "hello world end", encryption_to_crack.cracked_str
+    assert_equal "08304", encryption_to_crack.cracked_key
+  end
 end
