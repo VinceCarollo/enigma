@@ -31,25 +31,23 @@ class Message
     end
   end
 
+  def shift_all_letters(str, n=1)
+    @str.split('').each_slice(4) do |arr|
+      str << shift_letter(arr[0], n * a_shift) if !arr[0].nil?
+      str << shift_letter(arr[1], n * b_shift) if !arr[1].nil?
+      str << shift_letter(arr[2], n * c_shift) if !arr[2].nil?
+      str << shift_letter(arr[3], n * d_shift) if !arr[3].nil?
+    end
+    str
+  end
+
   def encrypt_with_keys
     encryption = []
-    @str.split('').each_slice(4) do |arr|
-      encryption << shift_letter(arr[0], a_shift) if !arr[0].nil?
-      encryption << shift_letter(arr[1], b_shift) if !arr[1].nil?
-      encryption << shift_letter(arr[2], c_shift) if !arr[2].nil?
-      encryption << shift_letter(arr[3], d_shift) if !arr[3].nil?
-    end
-    encryption.join
+    shift_all_letters(encryption).join
   end
 
   def decrypt_with_keys
     decryption = []
-    @str.split('').each_slice(4) do |arr|
-      decryption << shift_letter(arr[0], -a_shift) if !arr[0].nil?
-      decryption << shift_letter(arr[1], -b_shift) if !arr[1].nil?
-      decryption << shift_letter(arr[2], -c_shift) if !arr[2].nil?
-      decryption << shift_letter(arr[3], -d_shift) if !arr[3].nil?
-    end
-    decryption.join
+    shift_all_letters(decryption, -1).join
   end
 end
