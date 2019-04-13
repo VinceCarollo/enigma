@@ -23,8 +23,12 @@ class Message
   end
 
   def shift_letter(letter, shift)
-    i = @alphabet.index(letter)
-    @alphabet.rotate(shift)[i]
+    if @alphabet.index(letter).nil?
+      letter
+    else
+      i = @alphabet.index(letter)
+      @alphabet.rotate(shift)[i]
+    end
   end
 
   def encrypt_with_keys
