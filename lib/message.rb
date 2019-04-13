@@ -1,4 +1,6 @@
 class Message
+  attr_reader :cracked_str, :cracked_key
+
   def initialize(str, key_shift, date_shift)
     @str = str
     @key_shift = key_shift
@@ -49,5 +51,22 @@ class Message
   def decrypt_with_keys
     decryption = []
     shift_all_letters(decryption, -1).join
+  end
+
+  def crack
+    guide = []
+    @str[-4..-1].split('').each_slice(4) do |arr|
+      guide << shift_letter(arr[0], -@date_shift[0].to_i)
+      guide << shift_letter(arr[1], -@date_shift[1].to_i)
+      guide << shift_letter(arr[2], -@date_shift[2].to_i)
+      guide << shift_letter(arr[3], -@date_shift[3].to_i)
+    end
+    # shift last guide letter to match 'd'
+    # shift second to last guide letter to match 'n'
+    # AND c_key_shifts second number matches
+    # d_key_shifts first number
+    # helpful methods: rjust(2, '0')
+
+    require 'pry'; binding.pry
   end
 end
