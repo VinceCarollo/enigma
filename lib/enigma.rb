@@ -14,7 +14,7 @@ class Enigma
 
   def make_decryption_hash
     {
-      decryption: @encrypted_str,
+      decryption: @decrypted_str,
       key: @key_shift,
       date: @date
     }
@@ -41,7 +41,12 @@ class Enigma
     @key_shift = key_shift
     @date = date
     date_shift = create_proper_date_shift
-    @encrypted_str = Message.new(str.downcase, key_shift, date_shift).decrypt_with_keys
+    @decrypted_str = Message.new(str.downcase, key_shift, date_shift).decrypt_with_keys
     make_decryption_hash
+  end
+
+  def crack(str, date=nil)
+    @date = date
+    date_shift = create_proper_date_shift
   end
 end
