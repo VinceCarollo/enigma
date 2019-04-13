@@ -33,6 +33,10 @@ class MessageTest < Minitest::Test
     assert_equal 'd', encryption.shift_letter('l', 73)
   end
 
+  def test_leaves_punctuation_as_is
+    assert_equal '!', encryption.shift_letter('!', 73)
+  end
+
   def test_it_can_encrypt
     assert_equal "keder ohulw", encryption.encrypt_with_keys
   end
