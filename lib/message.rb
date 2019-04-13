@@ -31,7 +31,7 @@ class Message
     end
   end
 
-  def shift_all_letters(str, n=1)
+  def shift_all_letters(str, n)
     @str.split('').each_slice(4) do |arr|
       str << shift_letter(arr[0], n * a_shift) if !arr[0].nil?
       str << shift_letter(arr[1], n * b_shift) if !arr[1].nil?
@@ -43,7 +43,7 @@ class Message
 
   def encrypt_with_keys
     encryption = []
-    shift_all_letters(encryption).join
+    shift_all_letters(encryption, 1).join
   end
 
   def decrypt_with_keys
