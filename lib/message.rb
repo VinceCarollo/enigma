@@ -31,23 +31,21 @@ class Message
     end
   end
 
-  def shift_all_letters(str, n)
+  def shift_all_letters(cipher, n)
     @str.split('').each_slice(4) do |arr|
-      str << shift_letter(arr[0], n * a_shift) if !arr[0].nil?
-      str << shift_letter(arr[1], n * b_shift) if !arr[1].nil?
-      str << shift_letter(arr[2], n * c_shift) if !arr[2].nil?
-      str << shift_letter(arr[3], n * d_shift) if !arr[3].nil?
+      cipher << shift_letter(arr[0], n * a_shift) if !arr[0].nil?
+      cipher << shift_letter(arr[1], n * b_shift) if !arr[1].nil?
+      cipher << shift_letter(arr[2], n * c_shift) if !arr[2].nil?
+      cipher << shift_letter(arr[3], n * d_shift) if !arr[3].nil?
     end
-    str
+    cipher.join
   end
 
   def encrypt_with_keys
-    encryption = []
-    shift_all_letters(encryption, 1).join
+    shift_all_letters(Array.new, 1)
   end
 
   def decrypt_with_keys
-    decryption = []
-    shift_all_letters(decryption, -1).join
+    shift_all_letters(Array.new, -1)
   end
 end
