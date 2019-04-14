@@ -54,19 +54,13 @@ class Message
   end
 
   def crack
-    guide = []
-    @str[-4..-1].split('').each_slice(4) do |arr|
-      guide << shift_letter(arr[0], -@date_shift[0].to_i)
-      guide << shift_letter(arr[1], -@date_shift[1].to_i)
-      guide << shift_letter(arr[2], -@date_shift[2].to_i)
-      guide << shift_letter(arr[3], -@date_shift[3].to_i)
+    shift_guide = {}
+    if @str.length % 3
+      shift_guide[:a_shift_str] = @str[-1]
+      shift_guide[:d_shift_str] = @str[-2]
+      shift_guide[:c_shift_str] = @str[-3]
+      shift_guide[:b_shift_str] = @str[-4]
     end
-    # shift last guide letter to match 'd'
-    # shift second to last guide letter to match 'n'
-    # AND c_key_shifts second number matches
-    # d_key_shifts first number
-    # helpful methods: rjust(2, '0')
-
     require 'pry'; binding.pry
   end
 end
