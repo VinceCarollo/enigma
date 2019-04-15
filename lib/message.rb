@@ -1,5 +1,5 @@
 class Message
-  attr_reader :cracked_str, :cracked_key
+  attr_reader :key_shift
 
   def initialize(str, key_shift, date_shift)
     @str = str
@@ -33,34 +33,30 @@ class Message
     end
   end
 
-  def shift_all_letters(str, n)
+  def shift_all_letters(cipher, n)
     @str.split('').each_slice(4) do |arr|
-      str << shift_letter(arr[0], n * a_shift) if !arr[0].nil?
-      str << shift_letter(arr[1], n * b_shift) if !arr[1].nil?
-      str << shift_letter(arr[2], n * c_shift) if !arr[2].nil?
-      str << shift_letter(arr[3], n * d_shift) if !arr[3].nil?
+      cipher << shift_letter(arr[0], n * a_shift) if !arr[0].nil?
+      cipher << shift_letter(arr[1], n * b_shift) if !arr[1].nil?
+      cipher << shift_letter(arr[2], n * c_shift) if !arr[2].nil?
+      cipher << shift_letter(arr[3], n * d_shift) if !arr[3].nil?
     end
-    str
+    cipher.join
   end
 
   def encrypt_with_keys
-    encryption = []
-    shift_all_letters(encryption, 1).join
+    shift_all_letters(Array.new, 1)
   end
 
   def decrypt_with_keys
-    decryption = []
-    shift_all_letters(decryption, -1).join
+    shift_all_letters(Array.new, -1)
   end
 
   def crack
-    shift_guide = {}
-    if @str.length % 3
-      shift_guide[:a_shift_str] = @str[-1]
-      shift_guide[:d_shift_str] = @str[-2]
-      shift_guide[:c_shift_str] = @str[-3]
-      shift_guide[:b_shift_str] = @str[-4]
+    guide = ''
+    until guide[-4..-1] == ' end'
+      guide = @str
+      @key_shift = (@key_shift.to_i + 1).to_s.rjust(5, '0')
+      guide = decrypt_with_keys
     end
-    require 'pry'; binding.pry
   end
 end
