@@ -49,7 +49,7 @@ class Enigma
     @date = date
     date_shift = create_proper_date_shift
     cracked_str = Message.new(str.downcase, '00000', date_shift)
-    cracked_str.crack
+    cracked_str.crack_with_keys
     @decrypted_str = cracked_str.decrypt_with_keys
     @key_shift = cracked_str.key_shift
     make_decryption_hash

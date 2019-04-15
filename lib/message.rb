@@ -51,7 +51,7 @@ class Message
     shift_all_letters(Array.new, -1)
   end
 
-  def crack
+  def crack_with_keys
     guide = ''
     until guide[-4..-1] == ' end'
       guide = @str
