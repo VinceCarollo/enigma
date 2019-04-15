@@ -1,4 +1,6 @@
 class Message
+  attr_reader :key_shift
+
   def initialize(str, key_shift, date_shift)
     @str = str
     @key_shift = key_shift
@@ -47,5 +49,14 @@ class Message
 
   def decrypt_with_keys
     shift_all_letters(Array.new, -1)
+  end
+
+  def crack_with_keys
+    guide = ''
+    until guide[-4..-1] == ' end'
+      guide = @str
+      @key_shift = (@key_shift.to_i + 1).to_s.rjust(5, '0')
+      guide = decrypt_with_keys
+    end
   end
 end

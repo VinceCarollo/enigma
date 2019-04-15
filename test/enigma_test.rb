@@ -60,4 +60,23 @@ class EnigmaTest < Minitest::Test
     assert_equal 5, enigma.decrypt("Love Radically", "23819")[:key].length
     assert_equal 6, enigma.decrypt("Love Radically", "23819")[:date].length
   end
+
+  def test_it_can_crack_encryptions
+    expected = {
+      decryption: "hello world end",
+      date: "291018",
+      key: "08304"
+    }
+
+    assert_equal expected, enigma.crack("vjqtbeaweqihssi", "291018")
+  end
+
+  def test_it_can_crack_without_date_and_use_current_date
+    cracked = enigma.crack("djzrsmEqayeydtdrfz")
+
+    assert_equal ' end', cracked[:decryption][-4..-1]
+    assert_equal 18, cracked[:decryption].length
+    assert_equal 5, cracked[:key].length
+    assert_equal 6, cracked[:date].length
+  end
 end
