@@ -1,21 +1,38 @@
 # Enigma
 
-Project from [Turing Curriculum](http://backend.turing.io/module1/projects/enigma/index)
+A Ruby program that encrypts, decrypts, and cracks text files based on a Caesar Cipher key. Cracking allows for optional date inputs that defaults to todays date and returns the key used to decrypt the message. Decrypting  requires a key and Encrypting creates one.
 
-### Self Evaluation
+### Prerequisites
 
-#### Functionality - 4
+- Ruby
 
-Sucessfully implemented cracking method and command line was sucessfully implemented
+### Installing
 
-#### Object Oriented Programming - 3
+- Clone Repo
 
-Project is broken into logical components consisting of 4 classes that have single responsibilities. No methods are longer than 7 lines. No class is longer than 100 lines. Method names are clear and concise with maybe one or two lapses. No modules or superclass so no 4 here.
+## Running the tests
 
-#### Test Driven Development - 3
+- Minitest
 
-Every method is tested at both the unit and integration level. git history demonstrates tests are written before implementation of code. Test coverage metrics show coverage at 100%. No mocks are stubs so no 4.
+```
+rake
+```
+## Deployment
 
-#### Version Control - 3
+- add txt file to be encrypted
 
-At least 40 commits. At least 15 pull requests that are named and documented. No commits include multiple pieces of functionality. Some commit messages are ambiguous so no 4.
+```
+ruby lib/encrypt.rb your_message_file.txt your_encryption_file.txt
+```
+
+- to decrypt or crack
+
+```
+ruby lib/decrypt.rb
+
+ruby lib/crack.rb
+```
+## Built With
+
+* [Ruby](https://www.ruby-lang.org/en/) - 2.4.1
+* [Minitest](https://github.com/seattlerb/minitest)
